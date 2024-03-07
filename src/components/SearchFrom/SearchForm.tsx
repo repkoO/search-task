@@ -1,41 +1,37 @@
-import { useContext, useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { SearchContext } from "../context/SearchContext";
+import { useDebounce } from "../../hooks/UseDebounce";
 import "./styles.css";
-import { SearchContext } from "../SearchResults/SearchContext";
 
 export function SearchForm() {
-  const [value, setValue] = useState('')
-  const { setUsers } = useContext(SearchContext);
+  const [value, setValue] = useState("");
+  const { setData } = useContext(SearchContext);
+  const debouncedSearchTerm = useDebounce(value, 500);
 
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setValue(e.target.value)
-  }
-
-  const searchUsers = async (query: string) => {
-    try {
-       const response = await fetch(`https://dummyjson.com/users/search?q=${query}`);
-       if (!response.ok) {
-         throw new Error('Network response was not ok');
-       }
-       const data = await response.json();
-       setUsers(data)
-       console.log(data);
-
-       // Предполагается, что API возвращает массив пользователей
-       // Обновите состояние в контексте с полученными пользователями
-       // setUsers(data); // Этот вызов должен быть выполнен в контексте, где доступен setUsers
-    } catch (error) {
-       console.error('There has been a problem with your fetch operation:', error);
+  useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(`https://dummyjson.com/users/search?q=${debouncedSearchTerm}`);
+          if (!response.ok) {
+            throw new Error('Network response was not ok')
+          }
+          const data = await response.json();
+          setData(data);
+      } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error)
+      }
     }
-   };
-
+      fetchData();
+  }, [debouncedSearchTerm, setData]);
 
   return (
     <div className="searchForm">
       <form>
         <input
-          onChange={handleChange}
+          onChange={(e) => setValue(e.target.value)}
           type="text"
-          value={value} />
+          value={value}
+        />
       </form>
     </div>
   );
