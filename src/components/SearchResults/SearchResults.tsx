@@ -1,17 +1,15 @@
 import { useContext } from "react";
-import { SearchContext } from "./SearchContext";
+import { SearchContext } from "../context/SearchContext";
 import { UserCard } from "../UserCard/UserCard";
-
 import "./style.css";
 
 export function SearchResults() {
-  const { users } = useContext(SearchContext);
+  const { data } = useContext(SearchContext);
+  console.log(data);
 
   return (
     <div className="usersList">
-      {users.map((user) => (
-        <UserCard {...user} />
-      ))}
+      {/* {data.users.map((user) => <UserCard key={user.id} {...user} />)} */}
     </div>
   );
 }
