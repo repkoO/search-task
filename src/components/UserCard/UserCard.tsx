@@ -1,12 +1,12 @@
 import "./style.css";
 
-export function UserCard(props) {
+export function UserCard(users) {
   return (
     <div className="userCard">
-      <img className="userPic" src={props.image} />
+      <img className="userPic" src={users.image} />
       <div className="userInfo">
-        <div>{`${props.firstName} ${props.lastName}`}</div>
-        <div>{props.address.city}</div>
+        <div>{`${users.firstName} ${users.lastName}`}</div>
+        <div>{users.address.city}</div>
       </div>
     </div>
   );
