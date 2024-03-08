@@ -5,10 +5,20 @@ import "./style.css";
 import { RotatingLines } from "react-loader-spinner";
 
 export function SearchResults() {
-  const { data } = useContext<SearchContextType>(SearchContext);
+  const { data, isLoading } = useContext<SearchContextType>(SearchContext);
 
 return (
-  data.users ? (
+  isLoading ? (
+    <div className="load__snippet">
+      <RotatingLines
+        visible={true}
+        width="96"
+        strokeWidth="5"
+        animationDuration="0.75"
+        ariaLabel="rotating-lines-loading"
+      />
+    </div>
+  ) : (
     data.users.length === 0 ? (
       <div className="no__results">
         <p>No users found...</p>
@@ -20,16 +30,6 @@ return (
         ))}
       </div>
     )
-  ) : (
-    <div className="load__snippet">
-      <RotatingLines
-        visible={true}
-        width="96"
-        strokeWidth="5"
-        animationDuration="0.75"
-        ariaLabel="rotating-lines-loading"
-      />
-    </div>
   )
 )
 }

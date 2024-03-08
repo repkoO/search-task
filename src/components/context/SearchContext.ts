@@ -18,9 +18,13 @@ export interface Data {
 export interface SearchContextType {
   data: Data,
   setData: Dispatch<SetStateAction<Data>>;
+  isLoading: boolean;
+  setIsLoading: Dispatch<SetStateAction<boolean>>
 }
 
 export const SearchContext = createContext<SearchContextType>({
   data: { users: []},
-  setData: () => {}
+  setData: () => {},
+  isLoading: false,
+  setIsLoading: () => {},
 });

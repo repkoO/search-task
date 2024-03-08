@@ -5,11 +5,10 @@ import { SearchResults } from "./components/SearchResults/SearchResults";
 
 export default function App() {
   const [data, setData] = useState<Data>({users: []});
-  console.log(data);
-
+  const [isLoading, setIsLoading] = useState(false)
 
   return (
-    <SearchContext.Provider value={{ data, setData }}>
+    <SearchContext.Provider value={{ data, setData, setIsLoading, isLoading}}>
       <SearchForm />
       <SearchResults />
     </SearchContext.Provider>
