@@ -1,6 +1,7 @@
+import { User } from "../context/SearchContext";
 import "./style.css";
 
-export function UserCard(users) {
+export function UserCard(users: User) {
   return (
     <div className="userCard">
       <img className="userPic" src={users.image} />
