@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { SearchContext } from "../context/SearchContext";
+import { SearchContext, SearchContextType } from "../context/SearchContext";
 import { UserCard } from "../UserCard/UserCard";
 import "./style.css";
 import { RotatingLines } from "react-loader-spinner";
 
 export function SearchResults() {
-  const { data } = useContext(SearchContext);
+  const { data } = useContext<SearchContextType>(SearchContext);
 
 return (
   data.users ? (
