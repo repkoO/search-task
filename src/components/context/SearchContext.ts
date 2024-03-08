@@ -10,13 +10,13 @@ export interface User {
   }
 }
 
-interface Data {
+export interface Data {
   users: User[]
 }
 
 interface SearchContextType {
   data: Data;
-  setData: Dispatch<SetStateAction<User[]>>;
+  setData: Dispatch<SetStateAction<Data>>;
 }
 
 export const SearchContext = createContext<SearchContextType>({
