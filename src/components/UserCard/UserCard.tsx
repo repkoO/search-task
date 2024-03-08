@@ -1,4 +1,4 @@
-import { User } from "../context/SearchContext";
+import { User } from "../../context/SearchContext";
 import "./style.css";
 
 export function UserCard(users: User) {

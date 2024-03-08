@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SearchContext, SearchContextType } from "../context/SearchContext";
+import { SearchContext, SearchContextType } from "../../context/SearchContext";
 import { UserCard } from "../UserCard/UserCard";
 import "./style.css";
 import { RotatingLines } from "react-loader-spinner";

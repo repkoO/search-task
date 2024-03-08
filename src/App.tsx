@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { SearchForm } from "./components/SearchFrom/SearchForm";
-import { Data, SearchContext } from "./components/context/SearchContext";
+import { Data, SearchContext } from "./context/SearchContext";
 import { SearchResults } from "./components/SearchResults/SearchResults";
 
 export default function App() {
